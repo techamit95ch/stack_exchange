@@ -1,14 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-const QuestionScreen = () => {
-    return (
-        <View>
-            <Text>Question Answers</Text>
-        </View>
-    )
-}
+const QuestionScreen = ({ route, navigation }) => {
+  const { question_id } = route.params;
 
-export default QuestionScreen
+  return (
+    <View>
+      <Text>{question_id}</Text>
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({})
+export default QuestionScreen;
+
+const styles = StyleSheet.create({});

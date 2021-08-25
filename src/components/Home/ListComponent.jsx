@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import Question from './Question';
 import {
   Spinner,
@@ -9,13 +9,28 @@ import {
   NativeBaseProvider,
   Divider,
 } from 'native-base';
-const ListComponent = ({ data, nextPageQuestion, searchQuestion }) => {
+const ListComponent = ({
+  data,
+  nextPageQuestion,
+  searchQuestion,
+  navigation,
+}) => {
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
       data={data}
       keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item }) => <Question question={item} />}
+      renderItem={({ item }) => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(`Question`, {
+              question_id: item.question_id,
+            });
+          }}
+        >
+          <Question question={item} navigation={navigation} />
+        </TouchableOpacity>
+      )}
       onEndReached={nextPageQuestion}
       onEndReachedThreshold={0.01}
       ListFooterComponent={() =>

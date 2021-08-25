@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {
   Input,
   Button,
@@ -17,7 +17,7 @@ import {
 } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import moment from 'moment';
-const Question = ({ question }) => {
+const Question = ({ question, navigation }) => {
   // let date = new Date(question.creation_date);
   return (
     <HStack
@@ -27,34 +27,67 @@ const Question = ({ question }) => {
       style={styles.questionStack}
       key={question.question_id}
     >
-      <HStack style={styles.counterBody} space={2} alignItems="center">
-        {question.answer_count ? (
-          <>
-            <Text style={{ color: 'grey', flex: 1 }}>
-              {question.answer_count}
-            </Text>
-            <MaterialIcons
-              name="question-answer"
-              size={24}
-              color="grey"
-              style={{ flex: 1 }}
-            />
-          </>
-        ) : (
-          <Text fontSize="xxs" style={{ color: '#B20000' }}>
-            {' '}
-            No Answer Found
-          </Text>
-        )}
-      </HStack>
+      <>
+        <VStack style={styles.counterBody} space={2} alignItems="center">
+          <HStack space={2} alignItems="center">
+            {question.question_score ? (
+              <>
+                <Text style={{ color: '#b2bac2', flex: 1 }}>
+                  {question.question_score}
+                </Text>
+                <MaterialIcons
+                  name="score"
+                  size={20}
+                  color="#b2bac2"
+                  style={{ flex: 1 }}
+                />
+              </>
+            ) : (
+              <Text fontSize="xxs" style={{ color: '#B20000' }}>
+                {' '}
+                No Score Found
+              </Text>
+            )}
+          </HStack>
+          <HStack space={2} alignItems="center">
+            {question.answer_count ? (
+              <>
+                <Text style={{ color: '#b2bac2', flex: 1 }}>
+                  {question.answer_count}
+                </Text>
+                <MaterialIcons
+                  name="question-answer"
+                  size={20}
+                  color="#b2bac2"
+                  style={{ flex: 1 }}
+                />
+              </>
+            ) : (
+              <Text fontSize="xxs" style={{ color: '#B20000' }}>
+                {' '}
+                No Answer Found
+              </Text>
+            )}
+          </HStack>
+        </VStack>
+      </>
       <VStack space={2} width="100%" style={styles.questionBody}>
+        {/* <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(`Question`, {
+              question_id: question.question_id,
+            });
+          }}
+        > */}
         <Text noOfLines={2} isTruncated fontSize="sm" style={styles.text1}>
           {question.title}
         </Text>
+        {/* </TouchableOpacity> */}
+
         <HStack space={2} alignItems="center">
           {question.tags &&
             question.tags.map((item) => (
-              <TouchableOpacity style={styles.tags} key={item}>
+              <View style={styles.tags} key={item}>
                 <Text
                   noOfLines={3}
                   isTruncated
@@ -63,7 +96,7 @@ const Question = ({ question }) => {
                 >
                   {item}
                 </Text>
-              </TouchableOpacity>
+              </View>
             ))}
         </HStack>
         <Text
@@ -84,11 +117,9 @@ const styles = StyleSheet.create({
   questionStack: {
     height: 140,
     display: 'flex',
-    // padding: 5,
     backgroundColor: 'white',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     borderBottomColor: '#b2bac2',
-    // marginHorizontal: 5,
   },
   questionBody: {
     display: 'flex',
@@ -104,8 +135,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#dadfe8',
     height: '100%',
-    // marginTop: 5,
-    // marginBottom: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
   },
   text: {
     color: '#005EB8',

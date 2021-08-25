@@ -7,7 +7,7 @@ import SearchBar from '../components/Home/SearchBar';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import ListComponent from '../components/Home/ListComponent';
 import useQuestionHook from '../hooks/useQuestionHook';
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const [searchButton, setSearchButton] = useState(false);
   const [question_id, setQuestionId] = useState('');
   const [query, setQuery] = useState('');
@@ -59,6 +59,7 @@ const HomeScreen = () => {
               setQuestionId={setQuestionId}
               nextPageQuestion={nextPageQuestion}
               searchQuestion={searchQuestion}
+              navigation={navigation}
             />
           </>
         </SafeAreaView>

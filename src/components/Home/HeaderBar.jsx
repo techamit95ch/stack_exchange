@@ -39,7 +39,7 @@ export default HeaderBar;
 const styles = StyleSheet.create({
   headerBox: {
     // marginTop: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
