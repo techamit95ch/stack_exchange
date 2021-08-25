@@ -14,8 +14,10 @@ import {
   NativeBaseProvider,
   Divider,
   Box,
+  Avatar,
 } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import moment from 'moment';
 const Question = ({ question, navigation }) => {
   // let date = new Date(question.creation_date);
@@ -30,10 +32,34 @@ const Question = ({ question, navigation }) => {
       <>
         <VStack style={styles.counterBody} space={2} alignItems="center">
           <HStack space={2} alignItems="center">
-            {question.question_score ? (
+            {question.view_count ? (
               <>
                 <Text style={{ color: '#b2bac2', flex: 1 }}>
-                  {question.question_score}
+                  {question.view_count}
+                </Text>
+                <MaterialCommunityIcons
+                  name="eye-outline"
+                  size={20}
+                  color="#b2bac2"
+                  style={{ flex: 1 }}
+                />
+              </>
+            ) : (
+              <>
+                {/* <MaterialIcons
+                name="question-answer"
+                size={20}
+                color="#B20000"
+                style={{ flex: 1 }}
+              /> */}
+              </>
+            )}
+          </HStack>
+          <HStack space={2} alignItems="center">
+            {question.score ? (
+              <>
+                <Text style={{ color: '#b2bac2', flex: 1 }}>
+                  {question.score}
                 </Text>
                 <MaterialIcons
                   name="score"
@@ -43,10 +69,14 @@ const Question = ({ question, navigation }) => {
                 />
               </>
             ) : (
-              <Text fontSize="xxs" style={{ color: '#B20000' }}>
-                {' '}
-                No Score Found
-              </Text>
+              <>
+                {/* <MaterialIcons
+                name="question-answer"
+                size={20}
+                color="#B20000"
+                style={{ flex: 1 }}
+              /> */}
+              </>
             )}
           </HStack>
           <HStack space={2} alignItems="center">
@@ -63,10 +93,14 @@ const Question = ({ question, navigation }) => {
                 />
               </>
             ) : (
-              <Text fontSize="xxs" style={{ color: '#B20000' }}>
-                {' '}
-                No Answer Found
-              </Text>
+              <>
+                {/* <MaterialIcons
+                name="question-answer"
+                size={20}
+                color="#B20000"
+                style={{ flex: 1 }}
+              /> */}
+              </>
             )}
           </HStack>
         </VStack>
@@ -99,15 +133,38 @@ const Question = ({ question, navigation }) => {
               </View>
             ))}
         </HStack>
-        <Text
-          noOfLines={1}
-          isTruncated
-          fontSize="xxs"
-          style={{ color: 'grey' }}
-        >
-          {question.last_activity_date &&
-            moment(question.last_activity_date).fromNow()}
-        </Text>
+        <HStack space={2} alignItems="center">
+          {question.creation_date && (
+            <Text
+              noOfLines={1}
+              isTruncated
+              fontSize="xxs"
+              style={{ color: 'grey' }}
+            >
+              {moment(question.creation_date).fromNow()}
+            </Text>
+          )}
+          {question.owner && (
+            <>
+              <Text
+                noOfLines={1}
+                isTruncated
+                fontSize="xxs"
+                style={styles.text}
+              >
+                {question.owner.display_name}
+              </Text>
+              <Avatar
+                size="xs"
+                source={{
+                  uri: question.owner.profile_image,
+                }}
+              >
+                SS
+              </Avatar>
+            </>
+          )}
+        </HStack>
       </VStack>
     </HStack>
   );

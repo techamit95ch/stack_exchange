@@ -21,15 +21,17 @@ const ListComponent = ({
       data={data}
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate(`Question`, {
-              question_id: item.question_id,
-            });
-          }}
-        >
-          <Question question={item} navigation={navigation} />
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate(`Question`, {
+                question_id: item.question_id,
+              });
+            }}
+          >
+            <Question question={item} navigation={navigation} />
+          </TouchableOpacity>
+        </>
       )}
       onEndReached={nextPageQuestion}
       onEndReachedThreshold={0.01}
