@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react';
-import * as api from '../api/index';
-
+// import * as api from '../api/index';
+import axios from 'axios';
 export default () => {
-  const [questionResults, setQuestionResults] = useState([]);
-  const [questionError, setQuestionError] = useState('');
+  const [results, setQuestionResults] = useState([]);
+  const [error, setQuestionError] = useState('');
   // const [questionPage, setQuestionPage] = useState(1);
-  const searchApi = async (SearchTerm, Page) => {
+  const searchApi = async (id, Page) => {
     try {
       // console.log(data.items);
-
+      const { data } = await axios.get(
+        `https://api.stackexchange.com/2.3/questions/${id}/answers?page=${Page}&pagesize=10&order=desc&sort=activity&site=stackoverflow`
+      );
       if (Page === 1) {
-        const { data } = await api.getSearchQuestion(SearchTerm, Page);
-
         setQuestionResults([]);
         setQuestionResults(data.items);
       } else {
-        const { data } = await api.getSearchQuestion(SearchTerm, Page);
-
-        const nestData = questionResults.concat(data.items);
+        const nestData = results.concat(data.items);
         setQuestionResults(nestData);
       }
       //   console.log(data);
@@ -27,5 +25,5 @@ export default () => {
     }
   };
 
-  return [searchApi, questionResults, questionError];
+  return [searchApi, results];
 };

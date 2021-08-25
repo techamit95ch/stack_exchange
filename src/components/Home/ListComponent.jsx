@@ -25,7 +25,8 @@ const ListComponent = ({
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(`Question`, {
-                question_id: item.question_id,
+                // question_id: item.question_id,
+                question: item,
               });
             }}
           >

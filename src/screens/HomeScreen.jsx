@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
-import HeaderBar from '../components/Home/HeaderBar';
 import { StatusBar } from 'expo-status-bar';
-import SearchBar from '../components/Home/SearchBar';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+
 import ListComponent from '../components/Home/ListComponent';
 import useQuestionHook from '../hooks/useQuestionHook';
-const HomeScreen = ({navigation}) => {
+import SearchBar from '../components/Home/SearchBar';
+import HeaderBar from '../components/Home/HeaderBar';
+
+const HomeScreen = ({ navigation }) => {
   const [searchButton, setSearchButton] = useState(false);
   const [question_id, setQuestionId] = useState('');
   const [query, setQuery] = useState('');
@@ -22,12 +24,7 @@ const HomeScreen = ({navigation}) => {
     // console.log('from searchQuestion');
   };
   const nextPageQuestion = () => {
-    console.log('Form Next Page Question');
-
     setPage(page + 1);
-
-    // console.log(page);
-    // setQuestionPage(questionPage + 1);
     searchApi(query, page);
   };
   return (

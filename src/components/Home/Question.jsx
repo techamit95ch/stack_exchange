@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tags: {
-    backgroundColor: '#dadfe8',
+    backgroundColor: '#e6f0fa',
     padding: 5,
     display: 'flex',
     borderRadius: 2,
@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     flexGrow: 1,
+    alignSelf: 'flex-start',
 
     alignItems: 'center',
   },

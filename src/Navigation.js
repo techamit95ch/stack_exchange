@@ -21,7 +21,7 @@ export default () => {
           name="Question"
           component={QuestionScreen}
           options={{
-            headerTitle: 'Question',
+            headerTitle: 'Details',
             headerStyle: {
               backgroundColor: 'white',
             },
