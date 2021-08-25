@@ -40,6 +40,7 @@ const SearchBar = ({ setSearchButton, setQuery, searchQuery, query }) => {
         placeholder="Search"
         _light={{
           placeholderTextColor: 'blueGray.400',
+          color: 'blueGray.500',
         }}
         _dark={{
           placeholderTextColor: 'blueGray.50',
@@ -64,13 +65,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4.0,
 
     elevation: 4,
-    height: 60,
+    height: 70,
     display: 'flex',
     justifyContent: 'space-between',
   },
   input: {
     width: '90%',
-    // marginTop: 5,
+    // textColor: '#005EB8',
     height: 80,
   },
 });

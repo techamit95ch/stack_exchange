@@ -17,7 +17,20 @@ export default () => {
           component={HomeScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Question" component={QuestionScreen} />
+        <Stack.Screen
+          name="Question"
+          component={QuestionScreen}
+          options={{
+            headerTitle: 'Question',
+            headerStyle: {
+              backgroundColor: 'white',
+            },
+            headerTintColor: '#005EB8',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>

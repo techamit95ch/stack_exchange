@@ -50,17 +50,21 @@ const styles = StyleSheet.create({
     shadowRadius: 4.0,
 
     elevation: 4,
-    height: 60,
+    height: 70,
     display: 'flex',
     justifyContent: 'space-between',
   },
   heading: {
-    marginTop: 10,
+    marginTop: 30,
+    marginLeft: 10,
     color: '#005EB8',
     flex: 5,
+    fontWeight: 'bold',
   },
   icon: {
-    marginTop: 10,
+    marginTop: 30,
+    marginRight: 10,
+
     // marginLeft: 190,
     flex: 1,
   },
