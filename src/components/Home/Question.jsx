@@ -18,6 +18,7 @@ import {
 } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons';
 import moment from 'moment';
 const Question = ({ question, navigation }) => {
   // let date = new Date(question.creation_date);
@@ -28,6 +29,7 @@ const Question = ({ question, navigation }) => {
       alignItems="center"
       style={styles.questionStack}
       key={question.question_id}
+      space={4}
     >
       <>
         <VStack style={styles.counterBody} space={2} alignItems="center">
@@ -56,13 +58,37 @@ const Question = ({ question, navigation }) => {
             )}
           </HStack>
           <HStack space={2} alignItems="center">
-            {question.score ? (
+            {question.up_vote_count ? (
               <>
                 <Text style={{ color: '#b2bac2', flex: 1 }}>
-                  {question.score}
+                  {question.up_vote_count}
                 </Text>
-                <MaterialIcons
-                  name="score"
+                <SimpleLineIcons
+                  name="like"
+                  size={20}
+                  color="#b2bac2"
+                  style={{ flex: 1 }}
+                />
+              </>
+            ) : (
+              <>
+                {/* <MaterialIcons
+                name="question-answer"
+                size={20}
+                color="#B20000"
+                style={{ flex: 1 }}
+              /> */}
+              </>
+            )}
+          </HStack>
+          <HStack space={2} alignItems="center">
+            {question.down_vote_count ? (
+              <>
+                <Text style={{ color: '#b2bac2', flex: 1 }}>
+                  {question.down_vote_count}
+                </Text>
+                <SimpleLineIcons
+                  name="dislike"
                   size={20}
                   color="#b2bac2"
                   style={{ flex: 1 }}
@@ -113,9 +139,11 @@ const Question = ({ question, navigation }) => {
             });
           }}
         > */}
-        <Text noOfLines={2} isTruncated fontSize="sm" style={styles.text1}>
-          {question.title}
-        </Text>
+        <HStack space={2}>
+          <Text noOfLines={2} isTruncated fontSize="sm" style={styles.text1}>
+            {question.title}
+          </Text>
+        </HStack>
         {/* </TouchableOpacity> */}
 
         <HStack space={2} alignItems="center">
@@ -172,11 +200,13 @@ const Question = ({ question, navigation }) => {
 
 const styles = StyleSheet.create({
   questionStack: {
-    height: 140,
+    height: 150,
     display: 'flex',
     backgroundColor: 'white',
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#b2bac2',
+    // borderBottomWidth: 0.3,
+    // borderBottomColor: '#b2bac2',
+    // borderTopWidth: 0.3,
+    // borderTopColor: '#b2bac2',
   },
   questionBody: {
     display: 'flex',

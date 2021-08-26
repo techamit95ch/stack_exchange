@@ -20,10 +20,6 @@ const AnswerView = ({ data, moreView }) => {
         )}
         showsVerticalScrollIndicator={false}
         onEndReachedThreshold={0.01}
-        onEndReached={moreView}
-        ListFooterComponent={() =>
-          data.length ? <Spinner color="blue.500" size="sm" /> : <></>
-        }
       />
     </>
   );

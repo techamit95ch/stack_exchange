@@ -9,7 +9,7 @@ export default () => {
     try {
       // console.log(data.items);
       const { data } = await axios.get(
-        `https://api.stackexchange.com/2.3/questions/${id}/answers?page=${Page}&pagesize=10&order=desc&sort=activity&site=stackoverflow`
+        `https://api.stackexchange.com/2.3/questions/${id}/answers?page=${Page}&pagesize=10&order=desc&sort=activity&site=stackoverflow&filter=!T1gn2_ezNGBm(WNlS*`
       );
       if (Page === 1) {
         setQuestionResults([]);

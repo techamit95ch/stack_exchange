@@ -9,7 +9,7 @@ import AnswerView from '../components/Question/AnswerView';
 
 const QuestionScreen = ({ route, navigation }) => {
   const { question } = route.params;
-  const [searchApi, results] = useAnswerHook();
+  /* const [searchApi, results] = useAnswerHook();
   const [page, setPage] = useState(1);
   useEffect(() => {
     searchApi(question.question_id, page);
@@ -17,7 +17,7 @@ const QuestionScreen = ({ route, navigation }) => {
   const moreView = () => {
     setPage(page + 1);
     searchApi(question.question_id, page);
-  };
+  }; */
   return (
     <>
       <NativeBaseProvider>
@@ -25,7 +25,7 @@ const QuestionScreen = ({ route, navigation }) => {
           <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <QuestionViews question={question} />
             <>
-              <AnswerView data={results} moreView={moreView} />
+              <AnswerView data={question.answers} />
             </>
           </SafeAreaView>
         </SafeAreaProvider>

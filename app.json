@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Stack Exchange",
+    "githubUrl": "https://github.com/techamit95ch/stack_exchange"
   }
 }

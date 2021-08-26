@@ -24,10 +24,11 @@ const ListComponent = ({
         <>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate(`Question`, {
-                // question_id: item.question_id,
-                question: item,
-              });
+              if (item.answer_count) {
+                navigation.navigate(`Question`, {
+                  question: item,
+                });
+              }
             }}
           >
             <Question question={item} navigation={navigation} />
@@ -36,6 +37,7 @@ const ListComponent = ({
       )}
       onEndReached={nextPageQuestion}
       onEndReachedThreshold={0.01}
+      ItemSeparatorComponent={() => <Divider />}
       ListFooterComponent={() =>
         data.length ? <Spinner color="blue.500" size="sm" /> : <></>
       }

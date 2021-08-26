@@ -13,7 +13,7 @@ export const getSimilarQuestion = (query) =>
   );
 export const getSearchQuestion = (query, page) =>
   axios.get(
-    `${searchUrl}?page=${page}&pagesize=10&order=desc&sort=activity&q=${query}&site=stackoverflow`
+    `${searchUrl}?page=${page}&pagesize=10&order=desc&sort=activity&q=${query}&site=stackoverflow&filter=!.KWpexRBiMPCYwmT5ys3(_t4DG)Rz`
   );
 
 export const getQuestion = (id, page) =>
