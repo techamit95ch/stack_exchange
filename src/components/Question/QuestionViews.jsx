@@ -77,11 +77,11 @@ const QuestionViews = ({ question }) => {
         </HStack>
 
         <HStack space={2} alignItems="center" styles={styles.hStack}>
-          {question.tags &&
+          {question.tags.length > 0 ? (
             question.tags.map((item) => (
               <View style={styles.tags} key={item}>
                 <Text
-                  noOfLines={3}
+                  noOfLines={2}
                   isTruncated
                   fontSize="xxs"
                   style={styles.text}
@@ -89,7 +89,10 @@ const QuestionViews = ({ question }) => {
                   {item}
                 </Text>
               </View>
-            ))}
+            ))
+          ) : (
+            <></>
+          )}
         </HStack>
 
         {/* <VStack
@@ -148,20 +151,20 @@ const styles = StyleSheet.create({
     color: '#005EB8',
     flex: 1,
   },
+  // tags: {
   tags: {
     backgroundColor: '#e6f0fa',
     padding: 5,
-    // display: 'flex',
+    display: 'flex',
     borderRadius: 2,
-    // flex: 1,
-    // flexWrap: 'wrap',
+    flex: 1,
+    flexWrap: 'wrap',
     flexDirection: 'row',
-    // flexGrow: 1,
-    // width: 'auto',
-    // alignItems: 'center',
-
-    alignSelf: 'flex-start',
+    flexGrow: 1,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
   },
+  // },
   hStack: {
     margin: 15,
   },

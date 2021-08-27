@@ -24,10 +24,14 @@ const ListComponent = ({
         <>
           <TouchableOpacity
             onPress={() => {
-              if (item.answer_count) {
+              try {
+                // if (item.answer_count) {
                 navigation.navigate(`Question`, {
                   question: item,
                 });
+                // }
+              } catch (err) {
+                console.log(err);
               }
             }}
           >

@@ -5,10 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import QuestionScreen from './screens/QuestionScreen';
 import ProfileScreen from './screens/ProfileScreen';
-
+import { useDispatch } from 'react-redux';
+import { fetchData } from './actions/questions';
 const Stack = createNativeStackNavigator();
 
 export default () => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(fetchData());
+  }, []);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">

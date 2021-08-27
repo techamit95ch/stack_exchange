@@ -203,10 +203,6 @@ const styles = StyleSheet.create({
     height: 150,
     display: 'flex',
     backgroundColor: 'white',
-    // borderBottomWidth: 0.3,
-    // borderBottomColor: '#b2bac2',
-    // borderTopWidth: 0.3,
-    // borderTopColor: '#b2bac2',
   },
   questionBody: {
     display: 'flex',
@@ -247,7 +243,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     alignSelf: 'flex-start',
-
     alignItems: 'center',
   },
 });
