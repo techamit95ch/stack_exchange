@@ -1,3 +1,5 @@
+// import { REHYDRATE } from 'redux-persist/constants';
+
 export default (
   state = {
     searchTerms: [],
@@ -14,6 +16,10 @@ export default (
         searchTerms: action.payload.searchTerms,
         searchResults: action.payload.searchResults,
       };
+    /*  case REHYDRATE:
+      const incoming = action.payload;
+      if(incoming) return { ...state, ...incoming }
+      return state; */
     default:
       return state;
   }
